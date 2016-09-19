@@ -1,0 +1,242 @@
+body {
+  background-color: #b0d0ff;
+}
+
+a.btn.btn-custom {
+  line-height: 6px;
+}
+
+.navbar {
+  background: #0000ff;
+}
+
+.large-type {
+  font-size: 150px;
+  font-weight: bold;
+}
+
+.stackRow {
+  width: 100%;
+  height: 50px;
+}
+
+.stackLabel {
+  width: 10%;
+  height: 50px;
+  font-size: 25px;
+  text-align: left;
+  color: #3f3f3f;
+  float: left;
+  padding-top: 10px;
+}
+
+.stack {
+  width: 90%x;
+  height: 50px;
+  font-size: 38px;
+  text-align: right;
+  color: #000000;
+ }
+
+.statusRow {
+  width: 100%;
+  height: 30px;
+}
+
+.statusNull {
+  width: 5%;
+  height: 25px;
+  font-size: 20px;
+  text-align: left;
+  color: #000000;
+  float: left;
+  padding-top: 5px;
+}
+
+.statusShift {
+  width: 20%;
+  height: 25px;
+  font-size: 20px;
+  text-align: left;
+  color: #000000;
+  float: left;
+  padding-top: 5px;
+}
+
+.statusHyp {
+  width: 20%;
+  height: 25px;
+  font-size: 20px;
+  text-align: left;
+  color: #000000;
+  float: left;
+  padding-top: 5px;
+}
+
+.statusDRG {
+  width: 20%;
+  height: 25px;
+  font-size: 20px;
+  text-align: left;
+  color: #000000;
+  float: left;
+  padding-top: 5px;
+}
+
+.statusOther {
+  width: 35%x;
+  height: 25px;
+  font-size: 20px;
+  text-align: left;
+  color: #000000;
+  padding-top: 5px;
+ }
+
+.btn-custom {
+  border-top:1px solid #5f5f5f;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #1f1f1f;
+  border-right: 1px solid #1f1f1f;
+  background-color: #3f3f3f;
+  color: #ffffff !important;
+  margin: 3px;
+  padding: 1px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;  
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+.btn-custom:hover {
+  background: #3f6fff !important;
+  border: solid 1px #2A4E77;
+  text-decoration: none;  
+}
+
+.btn-custom:active {
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+  background: #0000ff !important;
+  border: solid 1px #203E5F;
+}
+
+.btn-numeric {
+  height: 64px;
+  width: 79px;
+  text-align: center;
+  padding-top: 29px;
+  font-size: 38px;
+}
+
+.btn-enter {
+  height: 64px;
+  width: 170px;
+  text-align: center;
+  padding-top: 29px;
+  font-size: 38px;
+}
+
+.btn-func {
+  height: 44px;
+  width: 65px;
+  text-align: center;
+  padding-top: 19px;
+  font-size: 28px;
+  margin: 3px;
+}
+
+.lbl-numeric {
+  height: 25px;
+  width: 89px;
+  text-align: center;
+  padding-top: 6px;
+  font-size: 18px;
+  color: #ffff00;
+  float: left;
+}
+
+.lbl-enter {
+  height: 25px;
+  width: 170px;
+  text-align: center;
+  padding-top: 6px;
+  font-size: 18px;
+  color: #ffff00;
+  float: left;
+}
+
+.lbl-func {
+  height: 15px;
+  width: 74px;
+  text-align: center;
+  font-size: 15px;
+  color: #ffff00;
+  float: left;
+}
+
+.row {
+  max-width: 700px;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px 2px;
+  color: #000000;
+  padding: 2px;
+}
+
+.active {
+  background-color: #7fff7f;
+}
+
+.offline {
+  background-color: #ffff7f;
+}
+
+.inactive {
+  background-color: #ff7f7f;
+}
+
+#CalcSkin {
+  width: 456px;
+  height:859px;
+  background-color: #5f5f5f;
+  margin-top:2px;
+  border-top:2px solid #9f9f9f;
+  border-bottom: 2px solid #000000;
+  border-left: 2px solid #3f3f3f;
+  border-right: 2px solid #3f3f3f;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;  
+}
+
+#CalcScreen {
+  position: absolute;
+  width: 444px;
+  height: 230px;
+  background-color: #7f9f7f;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#Keypad {
+  position: absolute;
+  width: 446px;
+  height: 615px;
+  background-color: #5f5f5f;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 240px;
+  margin-bottom: 5px;
+}
