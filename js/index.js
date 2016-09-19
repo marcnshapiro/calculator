@@ -80,8 +80,10 @@ var updateStatusHyp = function() {
   }
 }
 
+
 $(document).ready( function() {
   "use strict";
+
 
   $("#Key-0").on("click", function() {
     if (stack_x === "" && document.getElementById("Stack_X").innerHTML !== "") {
