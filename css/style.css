@@ -99,7 +99,6 @@ body {
 .btn-custom:active {
   background: #0000ff !important;
   border: solid 1px #203E5F;
-  color: black;
 }
 
 .btn-numeric {
