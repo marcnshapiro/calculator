@@ -94,6 +94,22 @@ body {
   background: #3f6fff !important;
   border: solid 1px #2A4E77;
   text-decoration: none;
+  color: white;
+}
+
+.btn-custom:hover.color-yellow {
+  background: #3f6fff !important;
+  border: solid 1px #2A4E77;
+  text-decoration: none;
+  color: black;
+}
+
+.btn-custom:focus {
+  color: white;
+}
+
+.btn-custom:focus.color-yellow {
+  color: black;
 }
 
 .btn-custom:active {

@@ -12,6 +12,9 @@ var e = 2.718281828459045;
 
 var mem = [0,0,0,0,0,0,0,0,0,0];
 
+var fixDec = 8;
+var fixPre = 12;
+
 var factorial = function(x) {
   var result = "";
   var num = 1;
@@ -110,6 +113,7 @@ $(document).ready( function() {
     }
     stack_x += "1"
     document.getElementById("Stack_X").innerHTML = stack_x;
+
     shifted = false;
     updateStatusShifted();
   });    
@@ -254,11 +258,13 @@ $(document).ready( function() {
       document.getElementById("Stack_Z").innerHTML = document.getElementById("Stack_Y").innerHTML;
       document.getElementById("Stack_Y").innerHTML = document.getElementById("Stack_X").innerHTML;     
     }
-    if (stack_x === "Enter Done") {
-      stack_x = "";
+    if (stack_x.indexOf(".") === -1) {
+      if (stack_x === "Enter Done") {
+        stack_x = "";
+      }
+      stack_x += "."
+      document.getElementById("Stack_X").innerHTML = stack_x;
     }
-    stack_x += "."
-    document.getElementById("Stack_X").innerHTML = stack_x;
     shifted = false;
     updateStatusShifted();
  });    
