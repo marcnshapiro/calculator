@@ -10,7 +10,7 @@ var hyp = false;
 var PI = 3.1415926535897932384626433;
 var e = 2.718281828459045;
 
-var mem = 0;
+var mem = [0,0,0,0,0,0,0,0,0,0];
 
 var factorial = function(x) {
   var result = "";
@@ -80,10 +80,9 @@ var updateStatusHyp = function() {
   }
 }
 
-
+$
 $(document).ready( function() {
   "use strict";
-
 
   $("#Key-0").on("click", function() {
     if (stack_x === "" && document.getElementById("Stack_X").innerHTML !== "") {
@@ -262,7 +261,7 @@ $(document).ready( function() {
     document.getElementById("Stack_X").innerHTML = stack_x;
     shifted = false;
     updateStatusShifted();
-  });    
+ });    
 
   $("#Key-bs").on("click", function() {
     stack_x = document.getElementById("Stack_X").innerHTML.substr(0,stack_x.length-1);;
@@ -427,7 +426,11 @@ $(document).ready( function() {
       document.getElementById("Stack_Z").innerHTML = document.getElementById("Stack_Y").innerHTML;
       document.getElementById("Stack_Y").innerHTML = document.getElementById("Stack_X").innerHTML;     
     }
-    stack_x = mem.toString()
+
+    //$( "#dlgRecall" ).prev(".ui-dialog-titlebar").css("display", "none");
+    //$( "#dlgRecall" ).dialog( "open" );
+ 
+    stack_x = mem[0].toString()
     document.getElementById("Stack_X").innerHTML = stack_x;
     stack_x = "";
     shifted = false;
@@ -435,7 +438,7 @@ $(document).ready( function() {
   });
 
   $("#Key-ms").on("click", function() {
-    mem = Number(document.getElementById("Stack_X").innerHTML);
+    mem[0] = Number(document.getElementById("Stack_X").innerHTML);
     stack_x = "";
     shifted = false;
     updateStatusShifted();
@@ -443,9 +446,9 @@ $(document).ready( function() {
 
   $("#Key-mp").on("click", function() {
     if (!shifted) {
-      mem += Number(document.getElementById("Stack_X").innerHTML);
+      mem[0] += Number(document.getElementById("Stack_X").innerHTML);
     }else {
-      mem -= Number(document.getElementById("Stack_X").innerHTML);
+      mem[0] -= Number(document.getElementById("Stack_X").innerHTML);
     }
     shifted = false;
     updateStatusShifted();
