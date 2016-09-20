@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html >
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
     <link rel="stylesheet" href="css/style.css">
 
@@ -13,12 +14,32 @@
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>   
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
     <script src='js/index.js'></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+      $( "#dialog" ).dialog({
+        autoOpen: false,
+        dialogClass: 'myTitleClass'
+      });
+   
+      $( "#opener" ).on( "click", function() {
+        $( "#dialog" ).dialog( "open" );
+      });
+    } );
+  </script>
   </head>
 
   <body>
     <center>
        <div id="CalcSkin">
         <div id="CalcScreen">
+          <div id="dialog" title="Basic dialog">
+            <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+          </div>
+           
+          <button id="opener">Open Dialog</button>
+          
           <div class="stackRow" align="left">
             <div id="Stack_T_Label" class="stackLabel" align="left">T:</div>
             <div id="Stack_T" class="stack" align="right"></div>
@@ -52,12 +73,12 @@
           <span class="lbl-func"></span>   <!--<span class="lbl-func">STO</span>-->
           <span class="lbl-func">M-</span>
 
-          <a id="Key-shift" href="#" class="btn btn-custom btn-func" role="button">Shift</a>
-          <a id="Key-drg" href="#" class="btn btn-custom btn-func" role="button">DRG</a>
-          <a id="Key-npr" href="#" class="btn btn-custom btn-func" role="button">nPr</a>   <!--<a id="Key-fse" href="#" class="btn btn-custom btn-func" role="button">FSE</a>-->
-          <a id="Key-mr" href="#" class="btn btn-custom btn-func" role="button">MR</a>
-          <a id="Key-ms" href="#" class="btn btn-custom btn-func" role="button">MS</a>
-          <a id="Key-mp" href="#" class="btn btn-custom btn-func" role="button">M+</a>
+          <button id="Key-shift" class="btn btn-custom btn-func color-yellow">Shift</button>
+          <button id="Key-drg" class="btn btn-custom btn-func">DRG</button>
+          <button id="Key-npr" class="btn btn-custom btn-func">nPr</button>   <!--<button id="Key-fse"  class="btn btn-custom btn-func">FSE</button>-->
+          <button id="Key-mr" class="btn btn-custom btn-func">MR</button>
+          <button id="Key-ms" class="btn btn-custom btn-func">MS</button>
+          <button id="Key-mp" class="btn btn-custom btn-func">M+</button>
 
           <span class="lbl-func">hyp<sup>-1</sup></span>
           <span class="lbl-func">sin<sup>-1</sup></span>
@@ -66,12 +87,12 @@
           <span class="lbl-func">e<sup>x</sup></span>
           <span class="lbl-func">10<sup>x</sup></span>
 
-          <a id="Key-hyp" href="#" class="btn btn-custom btn-func" role="button">hyp</a>
-          <a id="Key-sin" href="#" class="btn btn-custom btn-func" role="button">sin</a>
-          <a id="Key-cos" href="#" class="btn btn-custom btn-func" role="button">cos</a>
-          <a id="Key-tan" href="#" class="btn btn-custom btn-func" role="button">tan</a>
-          <a id="Key-ln" href="#" class="btn btn-custom btn-func" role="button">ln</a>
-          <a id="Key-log" href="#" class="btn btn-custom btn-func" role="button">log</a>
+          <button id="Key-hyp" class="btn btn-custom btn-func">hyp</button>
+          <button id="Key-sin" class="btn btn-custom btn-func">sin</button>
+          <button id="Key-cos" class="btn btn-custom btn-func">cos</button>
+          <button id="Key-tan" class="btn btn-custom btn-func">tan</button>
+          <button id="Key-ln" class="btn btn-custom btn-func">ln</button>
+          <button id="Key-log" class="btn btn-custom btn-func">log</button>
 
           <span class="lbl-func"><sup>x</sup>&radic;y</span>
           <span class="lbl-func"><sup>3</sup>&radic;</span>
@@ -80,12 +101,12 @@
           <span class="lbl-func">x&hArr;y</span>   <!--<span class="lbl-func">STACK</span>-->
           <span class="lbl-func">MOD</span>   <!--<span class="lbl-func">LASTx</span>-->
 
-          <a id="Key-yx" href="#" class="btn btn-custom btn-func" role="button">y<sup>x</sup></a>
-          <a id="Key-root" href="#" class="btn btn-custom btn-func" role="button">&radic;</a>
-          <a id="Key-x2" href="#" class="btn btn-custom btn-func" role="button">x<sup>2</sup></a>
-          <a id="Key-pct" href="#" class="btn btn-custom btn-func" role="button">%</a>
-          <a id="Key-rolldown" href="#" class="btn btn-custom btn-func" role="button">&dArr;</a>
-          <a id="Key-fact" href="#" class="btn btn-custom btn-func" role="button">n!</a>   <!--<a id="Key-exch" href="#" class="btn btn-custom btn-func" role="button">x&hArr;y</a>-->
+          <button id="Key-yx" class="btn btn-custom btn-func">y<sup>x</sup></button>
+          <button id="Key-root" class="btn btn-custom btn-func">&radic;</button>
+          <button id="Key-x2" class="btn btn-custom btn-func">x<sup>2</sup></button>
+          <button id="Key-pct" class="btn btn-custom btn-func">%</button>
+          <button id="Key-rolldown" class="btn btn-custom btn-func">&dArr;</button>
+          <button id="Key-fact" class="btn btn-custom btn-func">n!</button>   <!--<button id="Key-exch" class="btn btn-custom btn-func">x&hArr;y</button>-->
 
           <span class="lbl-numeric"></span>
           <span class="lbl-numeric"></span>
@@ -93,11 +114,11 @@
           <span class="lbl-numeric"></span>  <!--<span class="lbl-numeric">MOD</span>-->
           <span class="lbl-numeric"></span>
 
-          <a id="Key-7" href="#" class="btn btn-custom btn-numeric" role="button">7</a>
-          <a id="Key-8" href="#" class="btn btn-custom btn-numeric" role="button">8</a>
-          <a id="Key-9" href="#" class="btn btn-custom btn-numeric" role="button">9</a>
-          <a id="Key-cls" href="#" class="btn btn-custom btn-numeric" role="button">CLS</a>
-          <a id="Key-bs" href="#" class="btn btn-custom btn-numeric" role="button">&larr;</a>
+          <button id="Key-7" class="btn btn-custom btn-numeric">7</button>
+          <button id="Key-8" class="btn btn-custom btn-numeric">8</button>
+          <button id="Key-9" class="btn btn-custom btn-numeric">9</button>
+          <button id="Key-cls" class="btn btn-custom btn-numeric">CLS</button>
+          <button id="Key-bs" class="btn btn-custom btn-numeric color-red">&larr;</button>
 
           <span class="lbl-numeric"></span>   <!--<span class="lbl-numeric">n!</span>-->
           <span class="lbl-numeric"></span>   <!--<span class="lbl-numeric">nCr</span>-->
@@ -105,11 +126,11 @@
           <span class="lbl-numeric"></span>   <!--<span class="lbl-numeric">DEC</span>-->
           <span class="lbl-numeric"></span>   <!--<span class="lbl-numeric">HEX</span>-->
 
-          <a id="Key-4" href="#" class="btn btn-custom btn-numeric" role="button">4</a>
-          <a id="Key-5" href="#" class="btn btn-custom btn-numeric" role="button">5</a>
-          <a id="Key-6" href="#" class="btn btn-custom btn-numeric" role="button">6</a>
-          <a id="Key-mult" href="#" class="btn btn-custom btn-numeric" role="button">x</a>
-          <a id="Key-div" href="#" class="btn btn-custom btn-numeric" role="button">&divide;</a>
+          <button id="Key-4" class="btn btn-custom btn-numeric">4</button>
+          <button id="Key-5" class="btn btn-custom btn-numeric">5</button>
+          <button id="Key-6" class="btn btn-custom btn-numeric">6</button>
+          <button id="Key-mult" class="btn btn-custom btn-numeric">x</button>
+          <button id="Key-div" class="btn btn-custom btn-numeric">&divide;</button>
 
           <span class="lbl-numeric"></span>
           <span class="lbl-numeric"><i>e</i></span>
@@ -117,21 +138,21 @@
           <span class="lbl-numeric"></span>   <!--<span class="lbl-numeric">OCT</span>-->
           <span class="lbl-numeric"></span>   <!--<span class="lbl-numeric">BIN</span>-->
 
-          <a id="Key-1" href="#" class="btn btn-custom btn-numeric" role="button">1</a>
-          <a id="Key-2" href="#" class="btn btn-custom btn-numeric" role="button">2</a>
-          <a id="Key-3" href="#" class="btn btn-custom btn-numeric" role="button">3</a>
-          <a id="Key-add" href="#" class="btn btn-custom btn-numeric" role="button">+</a>
-          <a id="Key-sub" href="#" class="btn btn-custom btn-numeric" role="button">-</a>
+          <button id="Key-1" class="btn btn-custom btn-numeric">1</button>
+          <button id="Key-2" class="btn btn-custom btn-numeric">2</button>
+          <button id="Key-3" class="btn btn-custom btn-numeric">3</button>
+          <button id="Key-add" class="btn btn-custom btn-numeric">+</button>
+          <button id="Key-sub" class="btn btn-custom btn-numeric">-</button>
 
           <span class="lbl-numeric"></span>   <!--<span class="lbl-numeric">CONV</span>-->
           <span class="lbl-numeric"></span>   <!--<span class="lbl-numeric">CNST</span>-->
           <span class="lbl-numeric"></span>
           <span class="lbl-enter"></span>   <!--<span class="lbl-enter">ANS</span>-->
 
-          <a id="Key-0" href="#" class="btn btn-custom btn-numeric" role="button">0</a>
-          <a id="Key-chs" href="#" class="btn btn-custom btn-numeric" role="button"><sup>+</sup>/-</a>
-          <a id="Key-dp" href="#" class="btn btn-custom btn-numeric" role="button">.</a>
-          <a id="Key-enter" href="#" class="btn btn-custom btn-enter" role="button">ENTER</a>
+          <button id="Key-0" class="btn btn-custom btn-numeric">0</button>
+          <button id="Key-chs" class="btn btn-custom btn-numeric"><sup>+</sup>/-</button>
+          <button id="Key-dp" class="btn btn-custom btn-numeric">.</button>
+          <button id="Key-enter" class="btn btn-custom btn-enter"">ENTER</button>
         </div>
       </div>
     </center>
