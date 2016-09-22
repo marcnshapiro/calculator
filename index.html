@@ -40,40 +40,6 @@
     <center>
        <div id="CalcSkin">
         <div id="CalcScreen">
-          <!--
-          <div id="dlgRecall" title="Recall">
-            <fieldset>
-              <legend>Recall</legend>
-              <label for="mem-0">mem[0]</label>
-              <input type="radio" name="mem-0" id="mem-0">
-              <label for="mem-1">mem[1]</label>
-              <input type="radio" name="mem-1" id="mem-1">
-              <label for="mem-2">mem[2]</label>
-              <input type="radio" name="mem-2" id="mem-2">
-              <label for="mem-3">mem[3]</label>
-              <input type="radio" name="mem-3" id="mem-3">
-              <label for="mem-4">mem[4]</label>
-              <input type="radio" name="mem-4" id="mem-4">
-              <label for="mem-5">mem[5]</label>
-              <input type="radio" name="mem-5" id="mem-5">
-              <label for="mem-6">mem[6]</label>
-              <input type="radio" name="mem-6" id="mem-6">
-              <label for="mem-7">mem[7]</label>
-              <input type="radio" name="mem-7" id="mem-7">
-              <label for="mem-8">mem[8]</label>
-              <input type="radio" name="mem-8" id="mem-8">
-              <label for="mem-9">mem[9]</label>
-              <input type="radio" name="mem-9" id="mem-9">
-            </fieldset>
-             
-            <script>
-              $( "input[type='radio']" ).checkboxradio({
-                //create: function( event, ui ) {}
-              });
-            </script>
-          </div>
-          -->
-          
           <div class="stackRow" align="left">
             <div id="Stack_T_Label" class="stackLabel" align="left">T:</div>
             <div id="Stack_T" class="stack" align="right"></div>
@@ -99,7 +65,26 @@
           </div>
         </div>
 
+        <div id = "Fix">        
+          <div>
+            <span class="w75"><input type="radio" class="fp" name="fixed" value="fixed" checked>Fixed</span>
+            <span class="w100"><input type="radio" class="fp" name="fixed" value="float">Floating</span>
+          </div>
+          <div id = "radioFix">          
+            <span class="w125">Decimal Positions</span>
+            <span class="w50"><input TYPE="number" id="fixDecimals" MIN="0" MAX="15" STEP="1" VALUE="2" SIZE="6" onchange="setDecimalPositions()"></span>
+          </div>
+        </div>          
+ 
+        <div id = "Mem">
+        <div><span class="w200">Memory Selector</span>
+          <span class="w50"><input TYPE="number" id="memNumber" MIN="0" MAX="9" STEP="1" VALUE="0" SIZE="6" onchange="setMemory()"></span>
+          <span class="w150" id="memNum"></span>
+        </div>
+        </div>          
+ 
         <div id="Keypad">
+
           <span class="lbl-func"></span>
           <span class="lbl-func">DRG&rsaquo;</span>
           <span class="lbl-func">nCr</span>   <!--<span class="lbl-func">TAB</span>-->

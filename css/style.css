@@ -168,7 +168,6 @@ body {
   color: #ffff00;
   float: left;
 }
-
 .color-yellow {
   background-color: #efef00;
   color: #000000;
@@ -178,9 +177,90 @@ body {
   background-color: red;
 }
 
+.w50 {
+  height: 15px;
+  width: 50px;
+  float: left;
+  margin: 5px;
+}
+
+.w75 {
+  height: 15px;
+  width: 75px;
+  float: left;
+  margin: 5px;
+  color: #efef00;
+}
+
+.w100 {
+  height: 15px;
+  width: 100px;
+  float: left;
+  margin: 5px;
+  color: #efef00;
+}
+
+.w125 {
+  height: 15px;
+  width: 125px;
+  float: left;
+  text-align: left;
+  color: #efef00;
+  margin: 5px;
+  color: #efef00;
+}
+
+.w150 {
+  height: 25px;
+  width: 150px;
+  font-size: 15px;
+  float: left;
+  text-align: right;
+  background-color: #ffffff;
+  border: 2px groove;
+  margin-left: 5px;
+  padding: 1px;
+  margin: 5px;
+}
+
+.w200 {
+  height: 15px;
+  width: 200px;
+  float: left;
+  text-align: left;
+  margin: 5px;
+  color: #efef00;
+}
+
+
+#fixDecimals {
+  width: 40px;
+  height: 25px;
+  float: left;
+  border: 2px groove;
+  margin-right: 5px;
+}
+
+#memNumber {
+  width: 40px;
+  height: 25px;
+  float: left;
+  border: 2px groove;
+  margin-right: 5px;
+}
+
+#decPositions {
+  width: 30px;
+  height: 25px;
+  float: left;
+  background-color: #cfcfcf;
+  border: 2px groove;
+  margin-left: 5px;
+}
+
 #CalcSkin {
   width: 456px;
-  height:739px;
+  height:799px;
   background-color: #5f5f5f;
   margin-top:30px;
   border-top:2px solid #9f9f9f;
@@ -202,20 +282,41 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-#Keypad {
+
+#Fix {
   position: absolute;
-  width: 446px;
-  height: 495px;
-  background-color: #5f5f5f;
+  width: 222px;
+  height: 50px;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 240px;
   margin-bottom: 5px;
 }
 
-/*
-#dlgRecall {
-  background-color: white;
-  color: black;
+.fp {
+  height: 15px;
+  width: 25px;
+  font-size: 15px;
+  float: left;
 }
-*/
+
+#Mem {
+  position: absolute;
+  width: 222px;
+  height: 50px;
+  margin-left: 227px;
+  margin-right: 5px;
+  margin-top: 240px;
+  margin-bottom: 5px;
+}
+
+#Keypad {
+  position: absolute;
+  width: 446px;
+  height: 490px;
+  background-color: #5f5f5f;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 300px;
+  margin-bottom: 5px;
+}
