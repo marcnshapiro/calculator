@@ -204,8 +204,9 @@ var numGood = function(stack_x) {
 $(document).ready( function() {
   "use strict";
 
-  $('.fp').click(function () { 
+  $(".fp").click(function () {
       fixed = ($(this).val() === "fixed");
+      setDecimalPositions();
   });
 
   $("#Key-0").on("click", function() {
