@@ -31,10 +31,10 @@ var factorial = function(x) {
     for (var i = x; i > 1; i--) {
       num *= i;
     }
-    result = num.toFixed(fixDec);
+    result = fixed ? num.toFixed(fixDec) : num.toString();
   } else {
     if (x === 0) {
-      result = "1".toFixed(fixDec);
+      result = fixed ? "1".toFixed(fixDec) : "1";
     } else {
       result = "ERROR!";
     }
@@ -43,31 +43,31 @@ var factorial = function(x) {
 }
 
 var permutations = function(y,x) {
-  var result1 = factorial(y);
-  var result2 = factorial(y-x);
+  var result1 = Number(factorial(y));
+  var result2 = Number(factorial(y-x));
 
   var result = "";
 
   if  ((result1 === "ERROR!") || (result2 === "ERROR!")) {
     result = "ERROR!";
   } else {
-    result = (result1/result2).toFixed(fixDec);
+    result = fixed ? (result1/result2).toFixed(fixDec) :  (result1/result2).toString();
   }
 
   return result
 }
 
 var combinations = function(y,x) {
-  var result1 = factorial(y);
-  var result2 = factorial(y-x);
-  var result3 = factorial(x);
+  var result1 = Number(factorial(y));
+  var result2 = Number(factorial(y-x));
+  var result3 = Number(factorial(x));
 
   var result = "";
 
   if  ((result1 === "ERROR!") || (result2 === "ERROR!") || (result3 === "ERROR!")) {
     result = "ERROR!";
   } else {
-    result = ((result1/result2)/result3).toFixed(fixDec);
+    result = fixed ? ((result1/result2)/result3).toFixed(fixDec) :  ((result1/result2)/result3).toString();
   }
 
   return result
@@ -158,6 +158,47 @@ var numGood = function(stack_x) {
       shifted = false;
       updateStatusShifted();
     }  
+
+    return stack_x;
+  }
+
+  var doTrigFunc = function(stack_x, func) {
+    if (errorFree(stack_x)) {
+      var x = Number(document.getElementById("Stack_X").innerHTML);
+
+      if (!shifted) {
+        switch (drg) {
+          case "Deg":
+            x = x * (2 * PI) / 360;
+            break;
+          case "Grad":
+            x = x * (2 * PI) / 400;
+        }
+
+        stack_x = fixed ? func(x).toFixed(fixDec) : func(x).toString();
+      } else {
+        x = func(x);      
+
+        switch (drg) {
+          case "Deg":
+            x = Math.round(x * 360 / (2 * PI));
+            break;
+          case "Grad":
+            x = Math.round(x * 400 / (2 * PI));
+        }
+
+        stack_x = fixed ? x.toFixed(fixDec) : x.toString();
+      }
+
+      document.getElementById("Stack_X").innerHTML = stack_x;
+      stack_x = "";
+      shifted = false;
+      hyp = false;
+      updateStatusShifted();
+      updateStatusHyp();
+    }
+
+    return stack_x;
   }
 
 $(document).ready( function() {
@@ -270,28 +311,28 @@ $(document).ready( function() {
     var x = Number(document.getElementById("Stack_X").innerHTML);
     var y = Number(document.getElementById("Stack_Y").innerHTML);
 
-    doFourBanger(stack_x, fixed ? (y+x).toFixed(fixDec) : (y+x).toString());
+    stack_x = doFourBanger(stack_x, fixed ? (y+x).toFixed(fixDec) : (y+x).toString());
   });    
 
   $("#Key-sub").on("click", function() {
     var x = Number(document.getElementById("Stack_X").innerHTML);
     var y = Number(document.getElementById("Stack_Y").innerHTML);
 
-    doFourBanger(stack_x, fixed ? (y-x).toFixed(fixDec) : (y-x).toString());
+    stack_x = doFourBanger(stack_x, fixed ? (y-x).toFixed(fixDec) : (y-x).toString());
   });    
 
   $("#Key-mult").on("click", function() {
     var x = Number(document.getElementById("Stack_X").innerHTML);
     var y = Number(document.getElementById("Stack_Y").innerHTML);
 
-    doFourBanger(stack_x, fixed ? (y*x).toFixed(fixDec) : (y*x).toString());
+    stack_x = doFourBanger(stack_x, fixed ? (y*x).toFixed(fixDec) : (y*x).toString());
   });    
 
   $("#Key-div").on("click", function() {
     var x = Number(document.getElementById("Stack_X").innerHTML);
     var y = Number(document.getElementById("Stack_Y").innerHTML);
 
-    doFourBanger(stack_x, fixed ? (y/x).toFixed(fixDec) : (y/x).toString());
+    stack_x = doFourBanger(stack_x, fixed ? (y/x).toFixed(fixDec) : (y/x).toString());
   });    
 
   $("#Key-shift").on("click", function() {
@@ -427,148 +468,61 @@ $(document).ready( function() {
   });
 
   $("#Key-sin").on("click", function() {
-    if (errorFree(stack_x)) {
-      var x = Number(document.getElementById("Stack_X").innerHTML);
-
-      if (!shifted) {
-        switch (drg) {
-          case "Deg":
-            x = x * (2 * PI) / 360;
-            break;
-          case "Grad":
-            x = x * (2 * PI) / 400;
-        }
-
-        if (!hyp) {
-          stack_x = Math.sin(x).toFixed(fixDec);
-        } else {
-          stack_x = Math.sinh(x).toFixed(fixDec);
-        }
+    if (!shifted) {
+      if (!hyp) {
+        stack_x = doTrigFunc(stack_x, Math.sin);
       } else {
-        if (!hyp) {
-          x = Math.asin(x);
-        } else {
-          x = Math.asinh(x);
-        }      
-
-        switch (drg) {
-          case "Deg":
-            x = Math.round(x * 360 / (2 * PI));
-            break;
-          case "Grad":
-            x = Math.round(x * 400 / (2 * PI));
-        }
-
-        stack_x = x.toFixed(fixDec);
+        stack_x = doTrigFunc(stack_x, Math.sinh);
       }
-
-      document.getElementById("Stack_X").innerHTML = stack_x;
-      stack_x = "";
-      shifted = false;
-      hyp = false;
-      updateStatusShifted();
-      updateStatusHyp();
+    } else {
+      if (!hyp) {
+        stack_x = doTrigFunc(stack_x, Math.asin);
+      } else {
+        stack_x = doTrigFunc(stack_x, Math.asinh);
+      }      
     }
   });
 
   $("#Key-cos").on("click", function() {
-    if (errorFree(stack_x)) {
-      var x = Number(document.getElementById("Stack_X").innerHTML);
-
-      if (!shifted) {
-        switch (drg) {
-          case "Deg":
-            x = x * (2 * PI) / 360;
-            break;
-          case "Grad":
-            x = x * (2 * PI) / 400;
-        }
-
-        if (!hyp) {
-          stack_x = Math.cos(x).toFixed(fixDec);
-        } else {
-          stack_x = Math.cosh(x).toFixed(fixDec);
-        }
+    if (!shifted) {
+      if (!hyp) {
+        stack_x = doTrigFunc(stack_x, Math.cos);
       } else {
-        if (!hyp) {
-          x = Math.acos(x);
-        } else {
-          x = Math.acosh(x);
-        }      
-
-        switch (drg) {
-          case "Deg":
-            x = Math.round(x * 360 / (2 * PI))
-            break;
-          case "Grad":
-            x = Math.round(x * 400 / (2 * PI));
-        }
-
-        stack_x = x.toFixed(fixDec);
+        stack_x = doTrigFunc(stack_x, Math.cosh);
       }
-
-      document.getElementById("Stack_X").innerHTML = stack_x;
-      stack_x = "";
-      shifted = false;
-      hyp = false;
-      updateStatusShifted();
-      updateStatusHyp();
+    } else {
+      if (!hyp) {
+        stack_x = doTrigFunc(stack_x, Math.acos);
+      } else {
+        stack_x = doTrigFunc(stack_x, Math.acosh);
+      }      
     }
   });
 
   $("#Key-tan").on("click", function() {
-    if (errorFree(stack_x)) {
-      var x = Number(document.getElementById("Stack_X").innerHTML);
-
-      if (!shifted) {
-        switch (drg) {
-          case "Deg":
-            x = x * (2 * PI) / 360;
-            break;
-          case "Grad":
-            x = x * (2 * PI) / 400;
-        }
-
-        if (!hyp) {
-          stack_x = Math.tan(x).toFixed(fixDec);
-        } else {
-          stack_x = Math.tanh(x).toFixed(fixDec);
-        }
+    if (!shifted) {
+      if (!hyp) {
+        stack_x = doTrigFunc(stack_x, Math.tan);
       } else {
-        if (!hyp) {
-          x = Math.atan(x);
-        } else {
-          x = Math.atanh(x);
-        }      
-
-        switch (drg) {
-          case "Deg":
-            x = Math.round(x * 360 / (2 * PI));
-            break;
-          case "Grad":
-            x = Math.round(x * 400 / (2 * PI));
-        }
-
-        stack_x = x.toFixed(fixDec);
+        stack_x = doTrigFunc(stack_x, Math.tanh);
       }
-
-      document.getElementById("Stack_X").innerHTML = stack_x;
-      stack_x = "";
-      shifted = false;
-      hyp = false;
-      updateStatusShifted();
-      updateStatusHyp();
+    } else {
+      if (!hyp) {
+        stack_x = doTrigFunc(stack_x, Math.atan);
+      } else {
+        stack_x = doTrigFunc(stack_x, Math.atanh);
+      }      
     }
-  });
+ });
 
   $("#Key-ln").on("click", function() {
     if (errorFree(stack_x)) {
       var x = Number(document.getElementById("Stack_X").innerHTML);
 
       if (!shifted) {
-        stack_x = Math.log(x).toFixed(fixDec);
+        stack_x = fixed ? Math.log(x).toFixed(fixDec) : Math.log(x).toString();
       } else {
-        stack_x = Math.exp(x).toFixed(fixDec);
+        stack_x = fixed ? Math.exp(x).toFixed(fixDec) : Math.exp(x).toString();
         stack_x = chkOverflow(stack_x);
       }
       document.getElementById("Stack_X").innerHTML = stack_x;
@@ -584,9 +538,9 @@ $(document).ready( function() {
       var x = Number(document.getElementById("Stack_X").innerHTML);
 
       if (!shifted) {
-        stack_x = Math.log10(x).toFixed(fixDec);
+        stack_x = fixed ? Math.log10(x).toFixed(fixDec) : Math.log10(x).toString();
       } else {
-        stack_x = Math.pow(10, x).toFixed(fixDec);
+        stack_x = fixed ? Math.pow(10, x).toFixed(fixDec) : Math.pow(10, x).toString()
         stack_x = chkOverflow(stack_x);
       }
       document.getElementById("Stack_X").innerHTML = stack_x;
@@ -603,9 +557,9 @@ $(document).ready( function() {
       var y = Number(document.getElementById("Stack_Y").innerHTML);
 
       if (!shifted) {
-        stack_x = Math.pow(y, x).toFixed(fixDec);
+        stack_x = fixed ? Math.pow(y, x).toFixed(fixDec) : Math.pow(y, x).toString();
       } else {
-        stack_x = Math.pow(y, 1/x).toFixed(fixDec);
+        stack_x = fixed ? Math.pow(y, 1/x).toFixed(fixDec) : Math.pow(y, 1/x).toString();
      }
 
       stack_x = chkOverflow(stack_x);
@@ -622,9 +576,9 @@ $(document).ready( function() {
       var x = Number(document.getElementById("Stack_X").innerHTML);
 
       if (!shifted) {
-        stack_x = Math.pow(x, 1/2).toString();
+        stack_x = fixed ? Math.pow(x, 1/2).toFixed(fixDec) : Math.pow(x, 1/2).toString();
       } else {
-        stack_x = Math.pow(x, 1/3).toString();
+        stack_x = fixed ? Math.pow(x, 1/3).toFixed(fixDec) : Math.pow(x, 1/3).toString();
       }
 
       document.getElementById("Stack_X").innerHTML = stack_x;
@@ -640,9 +594,9 @@ $(document).ready( function() {
       var x = Number(document.getElementById("Stack_X").innerHTML);
 
       if (!shifted) {
-        stack_x = Math.pow(x, 2).toString();
+        stack_x = fixed ? Math.pow(x, 2).toFixed(fixDec) : Math.pow(x, 2).toString();
       } else {
-        stack_x = Math.pow(x, 3).toString();
+        stack_x = fixed ? Math.pow(x, 3).toFixed(fixDec) : Math.pow(x, 3).toString();
       }
 
       stack_x = chkOverflow(stack_x);
@@ -660,7 +614,7 @@ $(document).ready( function() {
       var y = Number(document.getElementById("Stack_Y").innerHTML);
 
       if (!shifted) {
-        stack_x = (y * x / 100).toFixed(fixDec);
+        stack_x = fixed ? (y * x / 100).toFixed(fixDec) : (y * x / 100).toString();
         stack_x = chkOverflow(stack_x);
         document.getElementById("Stack_X").innerHTML = stack_x;
         if (stack_x !== "ERR-OVERFLOW!") {
@@ -668,7 +622,7 @@ $(document).ready( function() {
         }
       } else {
         if (x != 0) {
-          stack_x = (1/x).toFixed(fixDec);
+          stack_x = fixed ? (1/x).toFixed(fixDec) : (1/x).toString();
           stack_x = chkOverflow(stack_x);
           document.getElementById("Stack_X").innerHTML = stack_x;
           if (stack_x !== "ERR-OVERFLOW!") {
@@ -719,7 +673,7 @@ $(document).ready( function() {
         document.getElementById("Stack_X").innerHTML = stack_x;
       } else {
         if (x != 0) {
-          stack_x = (y - Math.floor(y/x)*x).toFixed(fixDec);
+          stack_x = fixed ? (y - Math.floor(y/x)*x).toFixed(fixDec) : (y - Math.floor(y/x)*x).toString();
         } else {
           stack_x = "ERR-ZERO-DIV!";
         }
