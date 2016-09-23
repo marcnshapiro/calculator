@@ -4,8 +4,8 @@ var shifted = false;
 var drg = "Deg";
 var hyp = false;
 
-var PI = 3.14159265359;
-var e = 2.71828182846;
+var PI = 3.1415926535897932384626433832795;
+var e =  2.7182818284590452353602874713527;
 
 var mem = [0,0,0,0,0,0,0,0,0,0];
 
@@ -448,14 +448,14 @@ $(document).ready( function() {
 
       document.getElementById("memNum").innerHTML = mem[idx];
 
-      temp = chkOverflow(mem[idx]);
+      var temp = chkOverflow(mem[idx]);
       if (temp === "ERR-OVERFLOW!") {
         document.getElementById("Stack_X").innerHTML = temp;
-        stack_x = "";
         mem[idx] = 0;
         document.getElementById("memNum").innerHTML = mem[idx];
       }
 
+      stack_x = "";
       shifted = false;
       updateStatusShifted();
     }
