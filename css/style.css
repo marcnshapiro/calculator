@@ -259,6 +259,7 @@ body {
 }
 
 #CalcSkin {
+  position: relative;
   width: 456px;
   height:799px;
   background-color: #5f5f5f;
@@ -277,20 +278,16 @@ body {
   width: 444px;
   height: 230px;
   background-color: #7f9f7f;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  left: 5px;
+  top: 5px;
 }
 
 #Fix {
   position: absolute;
   width: 222px;
   height: 50px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 240px;
-  margin-bottom: 5px;
+  left: 5px;
+  top: 240px;
 }
 
 .fp {
@@ -304,10 +301,8 @@ body {
   position: absolute;
   width: 222px;
   height: 50px;
-  margin-left: 227px;
-  margin-right: 5px;
-  margin-top: 240px;
-  margin-bottom: 5px;
+  left: 227px;
+  top: 240px;
 }
 
 #Keypad {
@@ -315,8 +310,6 @@ body {
   width: 446px;
   height: 490px;
   background-color: #5f5f5f;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 300px;
-  margin-bottom: 5px;
+  left: 5px;
+  top: 300px;
 }

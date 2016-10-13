@@ -2,43 +2,22 @@
 <html >
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RPN Calculator</title>
+
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
     <link rel="stylesheet" href="css/style.css">
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RPN Calculator</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>   
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
     <script src='js/index.js'></script>
-
-    <!--
-    <script>
-      $( function() {
-        $( "#dlgRecall" ).dialog({
-          autoOpen: false,
-          closeOnEscape: true,
-          minwidth:75,
-          width: 75,
-          minheight: 200,
-          height: 200
-        });
-     
-        $( "#opener" ).on( "click", function() {
-          $( "#dlgRecall" ).dialog( "open" );
-        });
-      } );
-  </script>
-  -->
   </head>
 
   <body>
     <center>
-       <div id="CalcSkin">
+      <div id="CalcSkin" class="container-fluid">
         <div id="CalcScreen">
           <div class="stackRow" align="left">
             <div id="Stack_T_Label" class="stackLabel" align="left">T:</div>
@@ -77,10 +56,10 @@
         </div>          
  
         <div id = "Mem">
-        <div><span class="w200">Memory Selector</span>
-          <span class="w50"><input TYPE="number" id="memNumber" MIN="0" MAX="9" STEP="1" VALUE="0" SIZE="6" onchange="setMemory()"></span>
-          <span class="w150" id="memNum"></span>
-        </div>
+          <div><span class="w200">Memory Selector</span>
+            <span class="w50"><input TYPE="number" id="memNumber" MIN="0" MAX="9" STEP="1" VALUE="0" SIZE="6" onchange="setMemory()"></span>
+            <span class="w150" id="memNum"></span>
+          </div>
         </div>          
  
         <div id="Keypad">
